@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AjustesRouteImport } from './routes/ajustes'
+import { Route as EntrenarRouteImport } from './routes/entrenar'
+import { Route as NutricionRouteImport } from './routes/nutricion'
+import { Route as PlanRouteImport } from './routes/plan'
+import { Route as ProgresoRouteImport } from './routes/progreso'
+import { Route as SesionDateRouteImport } from './routes/sesion.$date'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AjustesRoute = AjustesRouteImport.update({
+  id: '/ajustes',
+  path: '/ajustes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrenarRoute = EntrenarRouteImport.update({
+  id: '/entrenar',
+  path: '/entrenar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NutricionRoute = NutricionRouteImport.update({
+  id: '/nutricion',
+  path: '/nutricion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanRoute = PlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgresoRoute = ProgresoRouteImport.update({
+  id: '/progreso',
+  path: '/progreso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SesionDateRoute = SesionDateRouteImport.update({
+  id: '/sesion/$date',
+  path: '/sesion/$date',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/entrenar': typeof EntrenarRoute
+  '/nutricion': typeof NutricionRoute
+  '/plan': typeof PlanRoute
+  '/progreso': typeof ProgresoRoute
+  '/sesion/$date': typeof SesionDateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/entrenar': typeof EntrenarRoute
+  '/nutricion': typeof NutricionRoute
+  '/plan': typeof PlanRoute
+  '/progreso': typeof ProgresoRoute
+  '/sesion/$date': typeof SesionDateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/entrenar': typeof EntrenarRoute
+  '/nutricion': typeof NutricionRoute
+  '/plan': typeof PlanRoute
+  '/progreso': typeof ProgresoRoute
+  '/sesion/$date': typeof SesionDateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ajustes'
+    | '/entrenar'
+    | '/nutricion'
+    | '/plan'
+    | '/progreso'
+    | '/sesion/$date'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/ajustes'
+    | '/entrenar'
+    | '/nutricion'
+    | '/plan'
+    | '/progreso'
+    | '/sesion/$date'
+  id:
+    | '__root__'
+    | '/'
+    | '/ajustes'
+    | '/entrenar'
+    | '/nutricion'
+    | '/plan'
+    | '/progreso'
+    | '/sesion/$date'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AjustesRoute: typeof AjustesRoute
+  EntrenarRoute: typeof EntrenarRoute
+  NutricionRoute: typeof NutricionRoute
+  PlanRoute: typeof PlanRoute
+  ProgresoRoute: typeof ProgresoRoute
+  SesionDateRoute: typeof SesionDateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ajustes': {
+      id: '/ajustes'
+      path: '/ajustes'
+      fullPath: '/ajustes'
+      preLoaderRoute: typeof AjustesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrenar': {
+      id: '/entrenar'
+      path: '/entrenar'
+      fullPath: '/entrenar'
+      preLoaderRoute: typeof EntrenarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nutricion': {
+      id: '/nutricion'
+      path: '/nutricion'
+      fullPath: '/nutricion'
+      preLoaderRoute: typeof NutricionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan': {
+      id: '/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof PlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progreso': {
+      id: '/progreso'
+      path: '/progreso'
+      fullPath: '/progreso'
+      preLoaderRoute: typeof ProgresoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sesion/$date': {
+      id: '/sesion/$date'
+      path: '/sesion/$date'
+      fullPath: '/sesion/$date'
+      preLoaderRoute: typeof SesionDateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AjustesRoute: AjustesRoute,
+  EntrenarRoute: EntrenarRoute,
+  NutricionRoute: NutricionRoute,
+  PlanRoute: PlanRoute,
+  ProgresoRoute: ProgresoRoute,
+  SesionDateRoute: SesionDateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
